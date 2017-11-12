@@ -1,0 +1,45 @@
+var _user$project$TimeDisplay$timeSegmentTicked = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(_user$project$Styles$timeSegmentTickedStyle),
+			_1: {ctor: '[]'}
+		},
+		{ctor: '[]'});
+};
+var _user$project$TimeDisplay$timeSegment = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(_user$project$Styles$timeSegmentStyle),
+			_1: {ctor: '[]'}
+		},
+		{ctor: '[]'});
+};
+var _user$project$TimeDisplay$timeDisplay = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(_user$project$Styles$timeDisplayStyle),
+			_1: {ctor: '[]'}
+		},
+		_elm_lang$core$List$concat(
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$core$List$repeat,
+					_elm_lang$core$Basics$round(model.time),
+					_user$project$TimeDisplay$timeSegmentTicked(model)),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$core$List$repeat,
+						model.seconds - _elm_lang$core$Basics$round(model.time),
+						_user$project$TimeDisplay$timeSegment(model)),
+					_1: {ctor: '[]'}
+				}
+			}));
+};

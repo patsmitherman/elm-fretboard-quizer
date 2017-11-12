@@ -1,0 +1,287 @@
+var _user$project$Main$slider = A2(
+	_elm_lang$html$Html$input,
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html_Attributes$type_('range'),
+		_1: {
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$defaultValue('1'),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$min('1'),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$max('10'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$step('1'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Events$onInput(_user$project$Types$UpdateSeconds),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		}
+	},
+	{ctor: '[]'});
+var _user$project$Main$h1Label = function (val) {
+	return A2(
+		_elm_lang$html$Html$h1,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(_user$project$Styles$resultStyle),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(val),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Main$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$style(
+						{
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'padding', _1: '10px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'display', _1: 'inline-block'},
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _user$project$Main$h1Label(
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							'Time: ',
+							_elm_lang$core$Basics$toString(model.time))),
+					_1: {
+						ctor: '::',
+						_0: _user$project$Main$h1Label(
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								'Speed: ',
+								_elm_lang$core$Basics$toString(model.seconds))),
+						_1: {
+							ctor: '::',
+							_0: _user$project$Main$h1Label(
+								A2(_elm_lang$core$Basics_ops['++'], 'String: ', model.currentString.name)),
+							_1: {
+								ctor: '::',
+								_0: _user$project$Main$h1Label(
+									A2(
+										_elm_lang$core$Basics_ops['++'],
+										'Note: ',
+										_elm_lang$core$Basics$toString(model.currentFret.names))),
+								_1: {
+									ctor: '::',
+									_0: _user$project$Main$h1Label(
+										A2(
+											_elm_lang$core$Basics_ops['++'],
+											'Fret: ',
+											_elm_lang$core$Basics$toString(model.currentFret.fret))),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$style(_user$project$Styles$resultStyle),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: model.isRunning ? A2(
+													_elm_lang$html$Html$button,
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html_Events$onClick(_user$project$Types$ToggleTimer),
+														_1: {ctor: '[]'}
+													},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html$text('Stop'),
+														_1: {ctor: '[]'}
+													}) : A2(
+													_elm_lang$html$Html$button,
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html_Events$onClick(_user$project$Types$ToggleTimer),
+														_1: {ctor: '[]'}
+													},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html$text('Run'),
+														_1: {ctor: '[]'}
+													}),
+												_1: {ctor: '[]'}
+											}),
+										_1: {
+											ctor: '::',
+											_0: _user$project$Main$slider,
+											_1: {
+												ctor: '::',
+												_0: _user$project$TimeDisplay$timeDisplay(model),
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}),
+			_1: {
+				ctor: '::',
+				_0: _user$project$Fretboard$fretboard(model),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Main$updateTime = function (model) {
+	return (_elm_lang$core$Native_Utils.cmp(
+		model.time,
+		_elm_lang$core$Basics$toFloat(model.seconds - 1)) > 0) ? 0 : function (_) {
+		return _.time;
+	}(
+		_elm_lang$core$Native_Utils.update(
+			model,
+			{time: model.time + 1}));
+};
+var _user$project$Main$update = F2(
+	function (msg, model) {
+		update:
+		while (true) {
+			var _p0 = msg;
+			switch (_p0.ctor) {
+				case 'GenerateNote':
+					return {
+						ctor: '_Tuple2',
+						_0: model,
+						_1: A2(
+							_elm_lang$core$Random$generate,
+							_user$project$Types$DisplayNote,
+							A2(_elm_lang$core$Random$int, 1, 150))
+					};
+				case 'DisplayNote':
+					var _p3 = _p0._0;
+					var hasFret = function (str) {
+						return function (x) {
+							return _elm_lang$core$Native_Utils.cmp(x, 0) > 0;
+						}(
+							_elm_lang$core$List$length(
+								A2(
+									_elm_lang$core$List$filter,
+									function (fret) {
+										return _elm_lang$core$Native_Utils.eq(fret.id, _p3);
+									},
+									str.frets)));
+					};
+					var maybeStr = function (x) {
+						return _elm_lang$core$List$head(x);
+					}(
+						A2(
+							_elm_lang$core$List$filter,
+							function (string) {
+								return hasFret(string);
+							},
+							model.strings));
+					var curStr = function () {
+						var _p1 = maybeStr;
+						if (_p1.ctor === 'Just') {
+							return _p1._0;
+						} else {
+							return _user$project$Model$initialString;
+						}
+					}();
+					var maybeFret = function (x) {
+						return _elm_lang$core$List$head(x);
+					}(
+						A2(
+							_elm_lang$core$List$filter,
+							function (fret) {
+								return _elm_lang$core$Native_Utils.eq(fret.id, _p3);
+							},
+							curStr.frets));
+					var curFret = function () {
+						var _p2 = maybeFret;
+						if (_p2.ctor === 'Just') {
+							return _p2._0;
+						} else {
+							return _user$project$Model$initialFret;
+						}
+					}();
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{currentString: curStr, currentFret: curFret}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				case 'Tick':
+					return (_elm_lang$core$Native_Utils.eq(
+						model.time,
+						_elm_lang$core$Basics$toFloat(model.seconds)) ? _user$project$Main$update(_user$project$Types$GenerateNote) : function (n) {
+						return {ctor: '_Tuple2', _0: n, _1: _elm_lang$core$Platform_Cmd$none};
+					})(
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								time: _user$project$Main$updateTime(model)
+							}));
+				case 'UpdateSeconds':
+					var maybe = A2(_elm_lang$core$Dict$get, _p0._0, model.timeDict);
+					var newTime = function () {
+						var _p4 = maybe;
+						if (_p4.ctor === 'Just') {
+							return _p4._0;
+						} else {
+							return 1;
+						}
+					}();
+					var _v4 = _user$project$Types$Reset,
+						_v5 = _elm_lang$core$Native_Utils.update(
+						model,
+						{seconds: newTime});
+					msg = _v4;
+					model = _v5;
+					continue update;
+				case 'Reset':
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{time: 0}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				default:
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{isRunning: !model.isRunning}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+			}
+		}
+	});
+var _user$project$Main$subscriptions = function (model) {
+	return model.isRunning ? A2(_elm_lang$core$Time$every, _elm_lang$core$Time$second, _user$project$Types$Tick) : _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Main$init = {ctor: '_Tuple2', _0: _user$project$Model$model, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$Main$main = _elm_lang$html$Html$program(
+	{view: _user$project$Main$view, update: _user$project$Main$update, init: _user$project$Main$init, subscriptions: _user$project$Main$subscriptions})();

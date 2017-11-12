@@ -1,0 +1,45 @@
+var _user$project$Types$Fret = F3(
+	function (a, b, c) {
+		return {id: a, fret: b, names: c};
+	});
+var _user$project$Types$Str = F3(
+	function (a, b, c) {
+		return {string: a, name: b, frets: c};
+	});
+var _user$project$Types$Model = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return {notes: a, accidentals: b, stringNodePos: c, strings: d, currentNote: e, currentAccidental: f, currentString: g, currentFret: h, seconds: i, time: j, timeDict: k, isRunning: l};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$Types$ToggleTimer = {ctor: 'ToggleTimer'};
+var _user$project$Types$Reset = {ctor: 'Reset'};
+var _user$project$Types$UpdateSeconds = function (a) {
+	return {ctor: 'UpdateSeconds', _0: a};
+};
+var _user$project$Types$Tick = function (a) {
+	return {ctor: 'Tick', _0: a};
+};
+var _user$project$Types$GenerateNote = {ctor: 'GenerateNote'};
+var _user$project$Types$DisplayNote = function (a) {
+	return {ctor: 'DisplayNote', _0: a};
+};

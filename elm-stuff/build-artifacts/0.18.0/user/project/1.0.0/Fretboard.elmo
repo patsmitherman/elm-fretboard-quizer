@@ -1,0 +1,335 @@
+var _user$project$Fretboard$noNoteSvg = A2(
+	_elm_lang$svg$Svg$circle,
+	{ctor: '[]'},
+	{ctor: '[]'});
+var _user$project$Fretboard$noteSvg = F2(
+	function (fretPos, model) {
+		var maybe = A2(_elm_lang$core$Dict$get, model.currentString.string, model.stringNodePos);
+		var xPos = function () {
+			var _p0 = maybe;
+			if (_p0.ctor === 'Just') {
+				return _p0._0;
+			} else {
+				return '20';
+			}
+		}();
+		return A2(
+			_elm_lang$svg$Svg$circle,
+			{
+				ctor: '::',
+				_0: _elm_lang$svg$Svg_Attributes$cx(xPos),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$svg$Svg_Attributes$cy('16'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$svg$Svg_Attributes$r('10'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$style(_user$project$Styles$noteStyle),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			},
+			{ctor: '[]'});
+	});
+var _user$project$Fretboard$stringLine = function (xPos) {
+	return A2(
+		_elm_lang$svg$Svg$line,
+		{
+			ctor: '::',
+			_0: _elm_lang$svg$Svg_Attributes$x1(xPos),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$svg$Svg_Attributes$y1('0'),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$svg$Svg_Attributes$x2(xPos),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$svg$Svg_Attributes$y2('32'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$svg$Svg_Attributes$strokeWidth('2'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$svg$Svg_Attributes$stroke('black'),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		},
+		{ctor: '[]'});
+};
+var _user$project$Fretboard$fretSvgAttrs = {
+	ctor: '::',
+	_0: _elm_lang$svg$Svg_Attributes$width('246'),
+	_1: {
+		ctor: '::',
+		_0: _elm_lang$svg$Svg_Attributes$height('32'),
+		_1: {
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(_user$project$Styles$svgFretStyle),
+			_1: {ctor: '[]'}
+		}
+	}
+};
+var _user$project$Fretboard$fretSvg = F3(
+	function (model, markers, fretPos) {
+		return A2(
+			_elm_lang$svg$Svg$svg,
+			_user$project$Fretboard$fretSvgAttrs,
+			A2(
+				_elm_lang$core$List$append,
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$svg$Svg$rect,
+						{
+							ctor: '::',
+							_0: _elm_lang$svg$Svg_Attributes$width('246'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$svg$Svg_Attributes$height('32'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$style(_user$project$Styles$svgRectStyle),
+									_1: {ctor: '[]'}
+								}
+							}
+						},
+						{ctor: '[]'}),
+					_1: {
+						ctor: '::',
+						_0: _user$project$Fretboard$stringLine('20'),
+						_1: {
+							ctor: '::',
+							_0: _user$project$Fretboard$stringLine('61'),
+							_1: {
+								ctor: '::',
+								_0: _user$project$Fretboard$stringLine('102'),
+								_1: {
+									ctor: '::',
+									_0: _user$project$Fretboard$stringLine('143'),
+									_1: {
+										ctor: '::',
+										_0: _user$project$Fretboard$stringLine('184'),
+										_1: {
+											ctor: '::',
+											_0: _user$project$Fretboard$stringLine('225'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$core$Native_Utils.eq(model.currentFret.fret, fretPos) ? A2(_user$project$Fretboard$noteSvg, fretPos, model) : _user$project$Fretboard$noNoteSvg,
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				markers));
+	});
+var _user$project$Fretboard$fretWithMarkerSvg = F2(
+	function (model, fretPos) {
+		return A2(
+			_elm_lang$svg$Svg$svg,
+			_user$project$Fretboard$fretSvgAttrs,
+			{
+				ctor: '::',
+				_0: A3(
+					_user$project$Fretboard$fretSvg,
+					model,
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$svg$Svg$circle,
+							{
+								ctor: '::',
+								_0: _elm_lang$svg$Svg_Attributes$cx('123'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$svg$Svg_Attributes$cy('16'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$svg$Svg_Attributes$r('8'),
+										_1: {ctor: '[]'}
+									}
+								}
+							},
+							{ctor: '[]'}),
+						_1: {ctor: '[]'}
+					},
+					fretPos),
+				_1: {ctor: '[]'}
+			});
+	});
+var _user$project$Fretboard$fretWithOctiveMarkerSvg = F2(
+	function (model, fretPos) {
+		return A2(
+			_elm_lang$svg$Svg$svg,
+			_user$project$Fretboard$fretSvgAttrs,
+			{
+				ctor: '::',
+				_0: A3(
+					_user$project$Fretboard$fretSvg,
+					model,
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$svg$Svg$circle,
+							{
+								ctor: '::',
+								_0: _elm_lang$svg$Svg_Attributes$cx('83'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$svg$Svg_Attributes$cy('16'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$svg$Svg_Attributes$r('8'),
+										_1: {ctor: '[]'}
+									}
+								}
+							},
+							{ctor: '[]'}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$svg$Svg$circle,
+								{
+									ctor: '::',
+									_0: _elm_lang$svg$Svg_Attributes$cx('163'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$svg$Svg_Attributes$cy('16'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$svg$Svg_Attributes$r('8'),
+											_1: {ctor: '[]'}
+										}
+									}
+								},
+								{ctor: '[]'}),
+							_1: {ctor: '[]'}
+						}
+					},
+					fretPos),
+				_1: {ctor: '[]'}
+			});
+	});
+var _user$project$Fretboard$fretboard = function (model) {
+	var fretWithOctiveMarker = _user$project$Fretboard$fretWithOctiveMarkerSvg(model);
+	var fretWithMarker = _user$project$Fretboard$fretWithMarkerSvg(model);
+	var fret = A2(
+		_user$project$Fretboard$fretSvg,
+		model,
+		{ctor: '[]'});
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(_user$project$Styles$neckWrapper),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: fret(1),
+			_1: {
+				ctor: '::',
+				_0: fret(2),
+				_1: {
+					ctor: '::',
+					_0: fretWithMarker(3),
+					_1: {
+						ctor: '::',
+						_0: fret(4),
+						_1: {
+							ctor: '::',
+							_0: fretWithMarker(5),
+							_1: {
+								ctor: '::',
+								_0: fret(6),
+								_1: {
+									ctor: '::',
+									_0: fretWithMarker(7),
+									_1: {
+										ctor: '::',
+										_0: fret(8),
+										_1: {
+											ctor: '::',
+											_0: fretWithMarker(9),
+											_1: {
+												ctor: '::',
+												_0: fret(10),
+												_1: {
+													ctor: '::',
+													_0: fret(11),
+													_1: {
+														ctor: '::',
+														_0: fretWithOctiveMarker(12),
+														_1: {
+															ctor: '::',
+															_0: fret(13),
+															_1: {
+																ctor: '::',
+																_0: fret(14),
+																_1: {
+																	ctor: '::',
+																	_0: fretWithMarker(15),
+																	_1: {
+																		ctor: '::',
+																		_0: fret(16),
+																		_1: {
+																			ctor: '::',
+																			_0: fretWithMarker(17),
+																			_1: {
+																				ctor: '::',
+																				_0: fret(18),
+																				_1: {
+																					ctor: '::',
+																					_0: fretWithMarker(19),
+																					_1: {
+																						ctor: '::',
+																						_0: fret(20),
+																						_1: {
+																							ctor: '::',
+																							_0: fretWithMarker(21),
+																							_1: {
+																								ctor: '::',
+																								_0: fret(22),
+																								_1: {
+																									ctor: '::',
+																									_0: fret(23),
+																									_1: {
+																										ctor: '::',
+																										_0: fretWithOctiveMarker(24),
+																										_1: {ctor: '[]'}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		});
+};
